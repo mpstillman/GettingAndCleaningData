@@ -14,6 +14,7 @@ The script will import the data set noted below from the Activity Recognition ex
 The data must be staged in the working directory.
 
 The output of this script will be 2 data files, both exported to the working directory. 
+
 1.  TidyData.txt contains:
 	- A merged data set of both training and test data from the Activity Recognition data sets.
 	- Extracts only the measurements on the mean and standard deviation for each measurement. 
