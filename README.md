@@ -11,6 +11,7 @@ This script is required to complete the "Getting And Cleaning Data" course proje
 
 
 The script will import the data set noted below from the Activity Recognition experiments and can be acquired from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+The data must be staged in the working directory.
 
 The output of this script will be 2 data files, both exported to the working directory. 
 1.  TidyData.txt contains:
