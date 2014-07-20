@@ -23,6 +23,8 @@ The output of this script will be 2 data files, both exported to the working dir
 2.  AggTidyData.txt contains:
 	- An independent tidy data set with the average of each variable for each activity and each subject from the TidyData data set.
 
+*** Please see the code book for information about the variables.
+
 *** Please note that the stringr R package must be installed and libraried in order for the package to complete successfully.  Also, the working directory must be set to the same location as the data files.
 
 
