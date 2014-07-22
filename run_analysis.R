@@ -14,7 +14,7 @@ colnames(AttributeName)[1] <- 'FeatureID'
 colnames(AttributeName)[2] <- 'FeatureName'
 
 
-#Load activity_labels
+#Load activity labels
 ActivityLabel <- read.table("./activity_labels.txt")
 colnames(ActivityLabel)[1] <- 'ActivityLabelID'
 colnames(ActivityLabel)[2] <- 'ActivityLabelName'
@@ -86,7 +86,7 @@ CompletedTrainData<-cbind(TrainSubject,TrainActivityMerged,TrainResult )
 #**Combine the Test and Training data set and export data.
 Output<-rbind (CompletedTestData, CompletedTrainData)
 
-#Keep colums related to the Subject, Activity, mean and standard deviation
+#Keep columns related to the Subject, Activity, mean and standard deviation
 TidyData<-Output[,
           (str_detect(colnames(Output),"mean")==TRUE |
           str_detect(colnames(Output),"std") == TRUE  |
