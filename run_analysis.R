@@ -1,15 +1,11 @@
-A code book that describes the variables, the data, and any transformations or work that you performed to clean up the data called CodeBook.md. 
-A README.md in the repo with your scripts. This repo explains how all of the scripts work and how they are connected.
-
-
-setwd("C:/DataScience/Coursera/GettingAndCleaningData/ProjectData")
+#Script to load Test and Training data for the Coursera Getting And Cleaning Data course project.
 library(stringr)
 
-
-#*******Load data reference data that is needed for both Test and Train DataSets******************
+#**Load data reference data that is needed for both Test and Train DataSets.
 
 #Load Attribute Name
 AttributeName <- read.table("./features.txt")
+
 #Name Attribute Columns
 colnames(AttributeName)[1] <- 'FeatureID'
 colnames(AttributeName)[2] <- 'FeatureName'
@@ -20,9 +16,9 @@ ActivityLabel <- read.table("./activity_labels.txt")
 colnames(ActivityLabel)[1] <- 'ActivityLabelID'
 colnames(ActivityLabel)[2] <- 'ActivityLabelName'
 
+colnames(TidyData)
 
-
-#*******Load and cleanse data for Test group******************
+#**Load and cleanse data for Test group
 
 #Load Test Result Set
 TestResult <- read.table("./test/X_test.txt")
@@ -53,9 +49,7 @@ TestActivityMerged<-merge(TestActivity,ActivityLabel,by="ActivityLabelID")
 CompletedTestData<-cbind(TestSubject,TestActivityMerged,TestResult )
 
 
-
-
-#*******Load and cleanse data for Training group******************
+#**Load and cleanse data for Training group
 
 #Load Train Result Set
 TrainResult <- read.table("./train/X_train.txt")
@@ -86,7 +80,7 @@ TrainActivityMerged<-merge(TrainActivity,ActivityLabel,by="ActivityLabelID")
 CompletedTrainData<-cbind(TrainSubject,TrainActivityMerged,TrainResult )
 
 
-#***********Combine the Test and Training data set*******************
+#**Combine the Test and Training data set and export data.
 Output<-rbind (CompletedTestData, CompletedTrainData)
 
 #Keep colums related to the Subject, Activity, mean and standard deviation
@@ -103,7 +97,9 @@ TidyData<-Output[,
 write.table(TidyData, "./TidyData.txt", sep="\t")
 
 
-#Generate data set with the average of each variable for each activity and each subject.
+#**Generate data set with the average of each variable for each activity and each subject.
+
+#Group By Subject and Activity within the TidaData data set.
 aggdata <-aggregate(TidyData, by=list(TidyData$SubjectID, TidyData$ActivityLabelID, TidyData$ActivityLabelName),FUN=mean, na.rm=TRUE)
 drops <- c("SubjectID","ActivityLabelID", "ActivityLabelName")
 AggTidyData<-aggdata[,!(names(aggdata) %in% drops)]
@@ -111,4 +107,5 @@ colnames(AggTidyData)[1] <- 'SubjectID'
 colnames(AggTidyData)[2] <- 'ActivityLabelID'
 colnames(AggTidyData)[3] <- 'ActivityLabelName'
 
+#Export AggTidyData data to txt file
 write.table(AggTidyData, "./AggTidyData.txt", sep="\t")
