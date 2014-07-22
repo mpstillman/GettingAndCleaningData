@@ -1,4 +1,5 @@
 #Script to load Test and Training data for the Coursera Getting And Cleaning Data course project.
+
 library(stringr)
 
 #**Load reference data that is needed for both Test and Train DataSets.
